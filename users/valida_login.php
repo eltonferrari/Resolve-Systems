@@ -41,5 +41,5 @@
                 header("Location: login.php?user=no");
             }
         }
-    }    
+    }
 ?>
