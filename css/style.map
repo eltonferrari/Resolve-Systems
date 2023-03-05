@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../scss/style.scss"
+	],
+	"sourcesContent": [
+		".card-login {\r\n    padding: 30px 0 0 0;\r\n    width: 350px;\r\n    margin: 0 auto;\r\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,UAAU;EACnB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,MAAM;CACjB"
+}
