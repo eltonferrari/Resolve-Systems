@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6 pt-4 text-center text-primary  ">
-                    <h2>Perfil do Usuário</h2>
+                    <h3>Perfil do Usuário</h3>
                 </div>
                 <div class="col-sm-3"></div>
                 <div>
