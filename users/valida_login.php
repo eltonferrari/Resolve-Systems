@@ -32,12 +32,16 @@
     echo 'Email POST: ' . $email . '<br ?>';
     echo 'Passwor POST: ' . $password . '<br ?>';
     if(is_null($userExist)) {
+        $_SESSION['login'] = 0;
         header("Location: login.php?user=no");
     } else {
         foreach($userExist as $user) {
             if($user['email'] == $email && $user['password'] == $password) {
+                $_SESSION['login'] = 1;
+                $_SESSION['iduser'] = $user['iduser'];
                 header("Location: home.php");
             } else {
+                $_SESSION['login'] = 0;
                 header("Location: login.php?user=no");
             }
         }
