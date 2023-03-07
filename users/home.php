@@ -38,14 +38,14 @@
                             </div>
                             <div class="col-sm-10">
                                 <div class="row">
-                                    <div class="col-sm-4 text-right">
-                                        Usuário
+                                    <div class="col-sm-4 text-right text-danger">
+                                        <strong>Usuário</strong>
                                     </div> 
-                                    <div class="col-sm-4">
-                                        <input type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
+                                    <div class="col-sm-4 slidecontainer">
+                                        <input class="slider" id="myRange" type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
                                     </div>
-                                    <div class="col-sm-4">
-                                        Administrador
+                                    <div class="col-sm-4 text-success">
+                                        <strong>Administrador</strong>
                                     </div>
                                 </div>
                             </div>
@@ -56,14 +56,14 @@
                             </div>
                             <div class="col-sm-10">
                                 <div class="row">
-                                    <div class="col-sm-4 text-right">
-                                        Inativo
+                                    <div class="col-sm-4 text-right text-danger">
+                                        <strong>Inativo</strong>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="range" name="active_user" min="0" max="1" value="<?php echo $user_active;?>">
                                     </div>
-                                    <div class="col-sm-4">
-                                        Ativo
+                                        <div class="col-sm-4 text-success">
+                                    <strong>Ativo</strong>
                                     </div>
                                 </div>
                             </div>
@@ -75,32 +75,32 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-5 pt-3">
                         <div>
-                            ID do Usuário: <?php echo $user_id;?>
+                            <strong>ID do Usuário: <?php echo $user_id;?></strong>
                         </div>
                         <div class="pt-2">
-                            <label for="name_user">Nome:</label>
-                            <input type="text" name="name_user" value="<?php echo $user_name;?>">
+                            <label for="name_user"><strong>Nome:</strong></label>
+                            <input class="border border-success" type="text" name="name_user" value="<?php echo $user_name;?>">
                         </div>
                         <div class="pt-2">
-                            <label for="email_user">E-Mail:</label>
-                            <input type="text" name="email_user" value="<?php echo $user_email;?>">
+                            <label for="email_user"><strong>E-Mail:</strong></label>
+                            <input class="border border-success" type="text" name="email_user" value="<?php echo $user_email;?>">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="row">
                             <div class="col-md-6 text-center pt-3">
-                                <label for="created_user">Data de criação:</label>
+                                <label for="created_user"><strong>Data de criação:</strong></label>
                             </div>
                             <div class="col-md-6 text-center pt-3">
-                                <label for="updated_user">Data da última alteração:</label>
+                                <label for="updated_user"><strong>Data da última alteração:</strong></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 text-center pt-3">
-                                <input type="date" name="created_user" value="<?php echo $user_created;?>">
+                                <p class="bg-success text-white"><strong><?php echo $user_created;?></strong></p>
                             </div>
                             <div class="col-md-6 text-center pt-3">
-                                <input type="date" name="updated_user" value="<?php echo $user_updated;?>">
+                                <p class="bg-success text-white"><strong><?php echo $user_updated;?></strong></p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                 <div class="row pt-5">
                     <div class="col-md-5"></div>
                     <div class="col-md-2 d-flex justify-content-center">
-                        <button class="btn btn-block btn-success">Salvar</button>
+                        <button class="btn btn-block btn-success"><strong>Salvar</strong></button>
                     </div>
                     <div class="col-md-5"></div>
                 </div>
