@@ -29,10 +29,28 @@
                 <a class="nav-link" href="../contato.php">Contato</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-outline-primary btn-sm" href="../users/login.php">Login</a>
-            </li>
-        </ul>
+        <?php
+            if(!($_SESSION['loged'] == true) ) {
+        ?>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary btn-sm" href="../users/login.php">Login</a>
+                    </li>
+                </ul>
+        <?php
+            } 
+            if (isset($_SESSION['home'])) {
+                if($_SESSION['loged'] == true && $_SESSION['home'] == true) {
+                    ?>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <?php $_SESSION['home'] == false; ?>
+                                    <a class="btn btn-outline-primary btn-sm" href="../users/register.php">Criar novo usuário</a>
+                                </li>
+                            </ul>
+                    <?php
+                }
+            }            
+        ?>
     </div>
 </nav>

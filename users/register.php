@@ -1,65 +1,17 @@
+<?php
+    session_start();
+    $_SESSION['loged'] = true;
+    $_SESSION['home'] = false;
+    include 'class_user.php';
+    $user1 = new User;
+?>
 <!doctype html>
 <html lang="pt-br">
-	<head>
-		<!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- COMPATIBILIDADE COM HTML5 -->
-        <!--[if lt IE 9]>
-            <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="..//css//Bootstrap4//css//bootstrap.min.css">
-
-        <!-- NORMALIZE CSS -->
-        <link rel="stylesheet" type="text/css" href="..//css//normalize.css">
-
-        <!-- CSS CUSTOMIZADO -->
-        <link rel="stylesheet" type="text/css" href="..//css//style.css">
-
-        <title>RSI - Registrar</title>
+    <head>
+		<?php include '../template/head_user.php';?>
 	</head>
     <body>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <!-- LOGO -->
-            <a href="../index.php" class="navbar-brand">
-                <img src="../img/logos/logo.png" width="140">
-            </a>
-            <!-- MENU HAMBURGUER -->
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- NAVEGAÇÃO -->
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../institucional.php">Institucional</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            O que fazemos?
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="../tecnologias.php">Tecnologias</a>
-                            <a class="dropdown-item" href="../portfolio.php">Portfólio</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../contato.php">Contato</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary btn-sm" href="../users/login.php">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php include '../template/menu_user.php';?>
         <div class="container">
             <?php 
                 if (isset($_GET['register']) && $_GET['register'] == "erro2") {
@@ -89,8 +41,19 @@
                                 <h5>
                                     <?php 
                                         echo "Usuário<br /> $user<br /> cadastrado com sucesso"; 
+                                        $array_users = $user1->getUserByEmail($user);
+                                        $id_pessoa = null;
+                                        foreach($array_users as $pessoa) {
+                                            $id_pessoa = $pessoa['iduser'];
+                                        }
+                                        $_SESSION['iduser'] = $id_pessoa;
                                     ?>
                                 </h5>
+                                <form action="home.php" method="post">
+                                    <button class="btn btn-large btn-primary" type="submit">
+                                        Ir para perfil de <?php echo $user; ?>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                         <div class="col-sm-3"></div>
@@ -122,12 +85,8 @@
             </div>
         </div>
 
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="..//css//Bootstrap4//js//bootstrap.min.js"></script>
+        <?php 
+            include '../template/js-bootstrap_user.php';
+        ?>
     </body>
 </html>

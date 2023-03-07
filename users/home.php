@@ -1,14 +1,10 @@
 <?php
     session_start();
     $idUser = $_SESSION['iduser'];
+    $_SESSION['home'] = true;
     include 'class_user.php';
     $user = new User();
     $perfil = $user->getUserById($idUser);
-    /*
-    echo '<pre>';
-        print_r($perfil);
-    echo '</pre>';
-    */
     foreach($perfil as $pessoa) {
         $user_id = $pessoa['iduser'];
         $user_name = $pessoa['name'];
@@ -19,17 +15,6 @@
         $user_active = $pessoa['active'];
         $user_created = $pessoa['created_at'];
         $user_updated = $pessoa['updated_at'];
-        /*
-        echo $user_id .'<br />';
-        echo $user_name .'<br />';
-        echo $user_email .'<br />';
-        echo $user_password .'<br />';
-        echo $user_image .'<br />';
-        echo $user_type .'<br />';
-        echo $user_active .'<br />';
-        echo $user_created .'<br />';
-        echo $user_updated;
-        */
     }    
 ?>
 <!doctype html>
