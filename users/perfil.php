@@ -33,27 +33,26 @@
                             <h3>Perfil do Usuário</h3>
                         </div>
                         <div class="row">
-                            <div class="col-sm-2 text-right">
-                                <label for="type_user">Tipo:</label>
-                            </div>
+                            <div class="col-sm-1"></div>
                             <div class="col-sm-10">
                                 <div class="row">
-                                    <div class="col-sm-4 text-right text-danger">
+                                    <div class="col-sm col-lg-0 text-right text-danger"></div>
+                                    <div class="col-lg-4 text-right text-danger">
                                         <strong>Usuário</strong>
                                     </div> 
-                                    <div class="col-sm-4 slidecontainer">
+                                    <div class="col-lg-4 slidecontainer">
                                         <input class="slider" id="myRange" type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
                                     </div>
-                                    <div class="col-sm-4 text-success">
+                                    <div class="col-lg-4 text-success">
                                         <strong>Administrador</strong>
                                     </div>
+                                    <div class="col-lg-0 text-right text-danger"></div>
                                 </div>
                             </div>
+                            <div class="col-sm-1"></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-2 text-right">
-                                <label for="activ_user">Usuário:</label>
-                            </div>
+                            <div class="col-sm-1"></div>
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-sm-4 text-right text-danger">
@@ -67,6 +66,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-1"></div>
                         </div>
                     </div>
                     <div class="col-sm-3"></div>
@@ -88,18 +88,41 @@
                     </div>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-6 text-center pt-3">
+                            <div class="col-md-5 text-center pt-3">
                                 <label for="created_user"><strong>Data de criação:</strong></label>
                             </div>
-                            <div class="col-md-6 text-center pt-3">
+                            <div class="col-md-5 text-center pt-3">
                                 <label for="updated_user"><strong>Data da última alteração:</strong></label>
+                            </div>
+                            <div class="col-md-2 text-center pt-3">
+                                <a href=".bd-example-modal-md-html" data-toggle="modal" data-target=".bd-example-modal-md-html">
+							        <img src="../img/icones/lista.png" width="40" title="Listar alterações">
+	        					</a>
+						        <div class="modal fade bd-example-modal-md-html" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							        <div class="modal-dialog modal-md-html">
+							  	        <div class="modal-content">
+									        <header class="modal-header">
+										        <h4 class="modal-title" id="exampleModalLongTitle">Listagem de Alterações de usuário</h4>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											        <span aria-hidden="true">&times;</span>
+        										</button>
+									        </header>
+									        <div class="modal-body">
+
+                                            </div>
+									        <footer class="modal-footer">
+										        <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+									        </footer>
+							            </div>
+							        </div>
+						        </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 text-center pt-3">
+                            <div class="col-md-5 text-center pt-3">
                                 <p class="bg-success text-white"><strong><?php echo $user_created;?></strong></p>
                             </div>
-                            <div class="col-md-6 text-center pt-3">
+                            <div class="col-md-5 text-center pt-3">
                                 <p class="bg-success text-white"><strong><?php echo $user_updated;?></strong></p>
                             </div>
                         </div>

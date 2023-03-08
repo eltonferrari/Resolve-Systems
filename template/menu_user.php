@@ -42,13 +42,16 @@
             if (isset($_SESSION['home'])) {
                 if($_SESSION['loged'] == true && $_SESSION['home'] == true) {
                     ?>
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item">
-                                    <?php $_SESSION['home'] == false; ?>
-                                    <a class="btn btn-outline-primary btn-sm" href="../users/register.php">Criar novo usuário</a>
-                                </li>
-                            </ul>
-                    <?php
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <?php $_SESSION['home'] == false; ?>
+                                <a class="btn btn-outline-primary btn-sm mr-3 mb-3" href="../users/register.php">Criar usuário</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary btn-sm ml-3" href="logoff.php">SAIR</a>
+                            </li>
+                        </ul>
+        <?php
                 }
             }            
         ?>

@@ -49,7 +49,7 @@
                                         $_SESSION['iduser'] = $id_pessoa;
                                     ?>
                                 </h5>
-                                <form action="home.php" method="post">
+                                <form action="perfil.php" method="post">
                                     <button class="btn btn-large btn-primary" type="submit">
                                         Ir para perfil de <?php echo $user; ?>
                                     </button>
@@ -71,10 +71,10 @@
                         <div class="card-body">
                             <form action="valida_register.php" method="post">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                    <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="senha" class="form-control" placeholder="Senha">
+                                    <input type="password" name="senha" class="form-control" placeholder="Senha" required>
                                 </div>
                                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                             </form>

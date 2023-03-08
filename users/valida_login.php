@@ -39,7 +39,7 @@
             if($user['email'] == $email && $user['password'] == $password) {
                 $_SESSION['login'] = 1;
                 $_SESSION['iduser'] = $user['iduser'];
-                header("Location: home.php");
+                header("Location: perfil.php");
             } else {
                 $_SESSION['login'] = 0;
                 header("Location: login.php?user=no");
