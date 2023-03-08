@@ -20,13 +20,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   	`email` varchar(255) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
   	`password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   	`image` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vazio.png',
-  	`type` int(1) NOT NULL DEFAULT '0',
-  	`active` int(1) NOT NULL DEFAULT '1',
+  	`type` int(1) NOT NULL DEFAULT 0,
+  	`active` int(1) NOT NULL DEFAULT 1,
   	`created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   	`updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
   	PRIMARY KEY (`iduser`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO users(email,password,type) value('eltonferrari@gmail.com','e10adc3949ba59abbe56e057f20f883e',1)
+INSERT INTO users(email,password,type) value('eltonferrari@gmail.com','e10adc3949ba59abbe56e057f20f883e',1);
 
 COMMIT;

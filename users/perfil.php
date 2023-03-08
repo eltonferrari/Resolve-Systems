@@ -24,119 +24,95 @@
 	</head>
     <body>
         <?php include '../template/menu_user.php';?>
-        <div class="container">    
-            <form action="valida_perfil.php" method="post">
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6 pt-4">
-                        <div class="text-center text-primary">
-                            <h3>Perfil do Usuário</h3>
+        <div class="container">
+            <div class="text-center text-primary pb-3">
+                <h3>Perfil do Usuário</h3>
+            </div>   
+            <div class="pt-5"> 
+                <form action="valida_perfil.php" method="post">
+                    <div class="row d-flex justify-content-center pb-3">
+                        <div class="text-right text-danger pr-3 pl-1">
+                            <strong>Usuário</strong>
+                        </div> 
+                        <div class="pr-3">
+                            <input type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
                         </div>
-                        <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    <div class="col-sm col-lg-0 text-right text-danger"></div>
-                                    <div class="col-lg-4 text-right text-danger">
-                                        <strong>Usuário</strong>
-                                    </div> 
-                                    <div class="col-lg-4 slidecontainer">
-                                        <input class="slider" id="myRange" type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
-                                    </div>
-                                    <div class="col-lg-4 text-success">
-                                        <strong>Administrador</strong>
-                                    </div>
-                                    <div class="col-lg-0 text-right text-danger"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-1"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    <div class="col-sm-4 text-right text-danger">
-                                        <strong>Inativo</strong>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input type="range" name="active_user" min="0" max="1" value="<?php echo $user_active;?>">
-                                    </div>
-                                        <div class="col-sm-4 text-success">
-                                    <strong>Ativo</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-1"></div>
-                        </div>
+                        <div class="text-success">
+                            <strong>Admin</strong>
+                        </div>                
                     </div>
-                    <div class="col-sm-3"></div>
-                </div>
-                <div class="row pt-5">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 pt-3">
-                        <div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="text-right text-danger pr-3">
+                            <strong>Inativo</strong>
+                        </div>
+                        <div class="pr-3">
+                            <input type="range" name="active_user" min="0" max="1" value="<?php echo $user_active;?>">
+                        </div>
+                        <div class="text-success">
+                            <strong>Ativo</strong>
+                        </div>
+                    </div>                    
+                    <div class="row pt-5">
+                        <div class="col-sm-5">
                             <strong>ID do Usuário: <?php echo $user_id;?></strong>
-                        </div>
-                        <div class="pt-2">
-                            <label for="name_user"><strong>Nome:</strong></label>
+                            <br />
+                            <label class="pt-4" for="name_user"><strong>Nome:</strong></label>
                             <input class="border border-success" type="text" name="name_user" value="<?php echo $user_name;?>">
-                        </div>
-                        <div class="pt-2">
-                            <label for="email_user"><strong>E-Mail:</strong></label>
+                            <br />
+                            <label class="pt-4" for="email_user"><strong>E-Mail:</strong></label>
                             <input class="border border-success" type="text" name="email_user" value="<?php echo $user_email;?>">
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="row">
-                            <div class="col-md-5 text-center pt-3">
-                                <label for="created_user"><strong>Data de criação:</strong></label>
+                        <div class="col-sm-5">
+                            <div class="row">  
+                                <div class="col-md-4 pt-5">
+                                    <strong>Criação:</strong>
+                                </div>
+                                <div class="col-md-8 pt-5">
+                                    <span class="bg-success">
+                                        <strong><?php echo $user_created;?></strong></p>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="col-md-5 text-center pt-3">
-                                <label for="updated_user"><strong>Data da última alteração:</strong></label>
-                            </div>
-                            <div class="col-md-2 text-center pt-3">
-                                <a href=".bd-example-modal-md-html" data-toggle="modal" data-target=".bd-example-modal-md-html">
-							        <img src="../img/icones/lista.png" width="40" title="Listar alterações">
-	        					</a>
-						        <div class="modal fade bd-example-modal-md-html" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-							        <div class="modal-dialog modal-md-html">
-							  	        <div class="modal-content">
-									        <header class="modal-header">
-										        <h4 class="modal-title" id="exampleModalLongTitle">Listagem de Alterações de usuário</h4>
-										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											        <span aria-hidden="true">&times;</span>
-        										</button>
-									        </header>
-									        <div class="modal-body">
-
-                                            </div>
-									        <footer class="modal-footer">
-										        <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
-									        </footer>
-							            </div>
-							        </div>
-						        </div>
+                            <div class="row">  
+                                <div class="col-md-4">
+                                    <strong>Alteração:</strong>
+                                </div>
+                                <div class="col-md-8">
+                                    <span class="bg-success">
+                                        <strong><?php echo $user_updated;?></strong></p>
+                                    </span>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="col-md-2 text-center pt-5">
+                            <a href=".bd-example-modal-md-html" data-toggle="modal" data-target=".bd-example-modal-md-html">
+                                <img src="../img/icones/lista.png" width="40" title="Listar alterações">
+                            </a>
+                            <div class="modal fade bd-example-modal-md-html" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-md-html">
+                                    <div class="modal-content">
+                                        <header class="modal-header">
+                                            <h4 class="modal-title" id="exampleModalLongTitle">Listagem de Alterações de usuário</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </header>
+                                        <div class="modal-body">
+                                            ...................
+                                        </div>
+                                        <footer class="modal-footer">
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+                                        </footer>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-5 text-center pt-3">
-                                <p class="bg-success text-white"><strong><?php echo $user_created;?></strong></p>
-                            </div>
-                            <div class="col-md-5 text-center pt-3">
-                                <p class="bg-success text-white"><strong><?php echo $user_updated;?></strong></p>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row pt-5">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-2 d-flex justify-content-center">
-                        <button class="btn btn-block btn-success"><strong>Salvar</strong></button>
+                    <div class="d-flex justify-content-center mt-5 mb-5">
+                        <button class="btn btn-large btn-success"><strong>Salvar</strong></button>
                     </div>
-                    <div class="col-md-5"></div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         <?php
             include '../template/js-bootstrap_user.php' 
