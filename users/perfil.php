@@ -57,7 +57,7 @@
                             <strong>ID do Usuário: <?php echo $user_id; ?></strong>
                             <br />
                             <label class="pt-4" for="name_user"><strong>Nome:</strong></label>
-                            <input class="border border-success" type="text" name="name_user" value="<?= $user_name; ?>">
+                            <input class="border border-success" type="text" name="name_user" placeholder="Digite seu nome completo" value="<?= $user_name; ?>">
                             <br />
                             <br />
                             <strong>E-Mail do usuário: <span class="bg-success p-1"><?= $user_email; ?></span></strong>

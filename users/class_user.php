@@ -18,13 +18,14 @@
         
         function editUser($idUser, $name, $email, $password, $image, $type, $active) {
             $query = "UPDATE users 
-                        SET name = ?, 
+                        SET idUser = ?,
+                            name = ?, 
                             email = ?,
                             password = ?, 
                             image = ?, 
                             type = ?, 
                             active = ? 
-                        WHERE idUser = ?";
+                        WHERE idUser = $idUser";
             $paramType = "issssii";
             $paramValue = array($idUser, $name, $email, $password, $image, $type, $active);
             
