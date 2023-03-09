@@ -16,7 +16,7 @@
             return $insertId;
         }
         
-        function editUser($idUser, $name, $email, $password, $image, $type, $active, $created_at, $updated_at) {
+        function editUser($idUser, $name, $email, $password, $image, $type, $active) {
             $query = "UPDATE users 
                         SET name = ?, 
                             email = ?,
@@ -25,8 +25,8 @@
                             type = ?, 
                             active = ? 
                         WHERE idUser = ?";
-            $paramType = "issssiiss";
-            $paramValue = array($idUser, $name, $email, $password, $image, $type, $active, $created_at, $updated_at);
+            $paramType = "issssii";
+            $paramValue = array($idUser, $name, $email, $password, $image, $type, $active);
             
             $this->db_handle->update($query, $paramType, $paramValue);
         }
