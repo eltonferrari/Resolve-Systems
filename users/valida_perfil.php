@@ -41,7 +41,8 @@
 
     if($user_name != $_POST['name_user']) {
         $name = $_POST['name_user'];
-        echo "Troca de nome para $name.<br />";
+        $msg_name = "Troca de nome para $name.";
+        $_SESSION['msg_name'] = $msg_name;
     }
     
     if($user_type != $_POST['type_user']) {
@@ -51,7 +52,8 @@
         } else {
             $type = "administrador";
         }
-        echo "Troca de tipo de usuário para $type.<br />";
+        $msg_type = "Troca de tipo de usuário para $type.";
+        $_SESSION['msg_type'] = $msg_type;
     }
     
     if($user_active != $_POST['active_user']) {
@@ -61,19 +63,8 @@
         } else {
             $active = "ativo";
         }
-        echo "Usuário alterado para $active.<br />";
+        $msg_active = "Usuário alterado para $active.";
+        $_SESSION['msg_active'] = $msg_active;
     }
-    
-
-
-
-
-
-
-
-
-
-
-    echo '<br /><br /><br /><br /><br /><br /><br /><br />';
-
+    header("Location: perfil.php");    
 ?>

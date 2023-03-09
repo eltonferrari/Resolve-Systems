@@ -4,6 +4,8 @@
     $_SESSION['home'] = true;
     include 'class_user.php';
     $user = new User();
+    $listaUsers = new User();
+    $lista = $listaUsers->getAllUsers();
     $perfil = $user->getUserById($idUser);
     foreach($perfil as $pessoa) {
         $user_id = $pessoa['iduser'];
@@ -27,7 +29,53 @@
         <div class="container">
             <div class="text-center text-primary pb-3">
                 <h3>Perfil do Usuário</h3>
-            </div>   
+            </div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="usuários">Usuários</label>
+                    <select class="form-control">
+                        <option>Selecione o usuário</option>
+                        <?php 
+                            foreach($list as $oneUser) {
+                        ?>
+                                <option><?= $oneUser['email']; ?></option>
+                        <?php    
+                            }
+                        ?>
+                    </select>
+                </div>
+            </form>
+            <div class="text-center text-primary pb-3">
+                <?php
+                    if(isset($_SESSION['msg_name'])) {
+                ?>
+                        <div class="text-center text-danger pb-1">
+                            <h6><?= $_SESSION['msg_name'] ?></h6>
+                        </div>            
+                <?php
+                        unset($_SESSION['msg_name']);
+                    }
+                ?>
+                <?php
+                    if(isset($_SESSION['msg_type'])) {
+                ?>
+                        <div class="text-center text-danger pb-1">
+                            <h6><?= $_SESSION['msg_type'] ?></h6>
+                        </div>            
+                <?php
+                        unset($_SESSION['msg_type']);
+                    }
+                ?><?php
+                    if(isset($_SESSION['msg_active'])) {
+                ?>
+                        <div class="text-center text-danger">
+                            <h6><?= $_SESSION['msg_active']?></h6>
+                        </div>            
+                <?php
+                        unset($_SESSION['msg_active']);
+                    }
+                ?>
+            </div>            
             <div class="pt-5"> 
                 <form action="valida_perfil.php" method="post">
                     <div class="row d-flex justify-content-center pb-3">
