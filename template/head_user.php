@@ -11,9 +11,9 @@
 <link rel="stylesheet" href="../css/Bootstrap4/css/bootstrap.min.css">
 
 <!-- NORMALIZE CSS -->
-<link   rel="stylesheet" type="text/css" href="../css/normalize.css">
+<link   rel="stylesheet" type="text/css" href="../css//normalize.css">
 
 <!-- CSS CUSTOMIZADO -->
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css//style.css">
 
 <title>RSI - Resolve Sistemas da Informação</title>

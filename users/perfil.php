@@ -15,7 +15,7 @@
         $user_active = $pessoa['active'];
         $user_created = $pessoa['created_at'];
         $user_updated = $pessoa['updated_at'];
-    }    
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -35,7 +35,7 @@
                             <strong>Usuário</strong>
                         </div> 
                         <div class="pr-3">
-                            <input type="range" name="type_user" min="0" max="1" value="<?php echo $user_type;?>">
+                            <input type="range" name="type_user" min="0" max="1" value="<?= $user_type; ?>">                                                                                            
                         </div>
                         <div class="text-success">
                             <strong>Admin</strong>
@@ -46,7 +46,7 @@
                             <strong>Inativo</strong>
                         </div>
                         <div class="pr-3">
-                            <input type="range" name="active_user" min="0" max="1" value="<?php echo $user_active;?>">
+                            <input type="range" name="active_user" min="0" max="1" value="<?= $user_active; ?>">
                         </div>
                         <div class="text-success">
                             <strong>Ativo</strong>
@@ -54,22 +54,22 @@
                     </div>                    
                     <div class="row pt-5">
                         <div class="col-sm-5">
-                            <strong>ID do Usuário: <?php echo $user_id;?></strong>
+                            <strong>ID do Usuário: <?php echo $user_id; ?></strong>
                             <br />
                             <label class="pt-4" for="name_user"><strong>Nome:</strong></label>
-                            <input class="border border-success" type="text" name="name_user" value="<?php echo $user_name;?>">
+                            <input class="border border-success" type="text" name="name_user" value="<?= $user_name; ?>">
                             <br />
-                            <label class="pt-4" for="email_user"><strong>E-Mail:</strong></label>
-                            <input class="border border-success" type="text" name="email_user" value="<?php echo $user_email;?>">
+                            <br />
+                            <strong>E-Mail do usuário: <span class="bg-success p-1"><?= $user_email; ?></span></strong>
                         </div>
                         <div class="col-sm-5">
                             <div class="row">  
-                                <div class="col-md-4 pt-5">
+                                <div class="col-md-4 mq-criacao">
                                     <strong>Criação:</strong>
                                 </div>
-                                <div class="col-md-8 pt-5">
+                                <div class="col-md-8">
                                     <span class="bg-success">
-                                        <strong><?php echo $user_created;?></strong></p>
+                                        <strong><?= $user_created; ?></strong></p>
                                     </span>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <span class="bg-success">
-                                        <strong><?php echo $user_updated;?></strong></p>
+                                        <strong><?php echo $user_updated; ?></strong></p>
                                     </span>
                                 </div>
                             </div>  

@@ -5,8 +5,8 @@
 		"../scss/style.scss"
 	],
 	"sourcesContent": [
-		".card-login {\r\n    padding: 30px 0 0 0;\r\n    width: 350px;\r\n    margin: 0 auto;\r\n}"
+		".card-login {\r\n    padding: 30px 0 0 0;\r\n    width: 350px;\r\n    margin: 0 auto;\r\n}\r\n\r\n// perfil.php\r\n// media-querie -> posição elementos ->\r\n// -> Criação e Alteração\r\n@media (max-width: 575.98px) {\r\n\t.mq-criacao {\r\n        padding-top: 20px;\r\n    }\r\n}\r\n\r\n/*Extra small devices (portrait phones, menor que 576px)*/\r\n@media (min-width: 576px) and (max-width: 767.98px) {\r\n\t\r\n}\r\n\r\n/*Small devices (landscape phones, 576px e maiores)*/\r\n@media (min-width: 768px) and (max-width: 990.98px) {\r\n\t\r\n}\r\n\r\n/*Medium devices (tablets, 768px e maiores)*/\r\n@media (min-width: 991px) and (max-width: 1199.98px) {\r\n\t\r\n}\r\n\r\n/*Large devices (desktops, 992px e maiores)*/\r\n@media (min-width: 1200px) {\r\n\t\r\n}"
 	],
 	"names": [],
-	"mappings": ";AAAA,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,UAAU;EACnB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,MAAM;CACjB"
+	"mappings": ";AAAA,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,UAAU;EACnB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,MAAM;CACjB;;AAKD,MAAM,EAAE,SAAS,EAAE,QAAQ;;EAC1B,AAAA,WAAW,CAAC;IACL,WAAW,EAAE,IAAI;GACpB;;;AAGL,0DAA0D;AAK1D,qDAAqD;AAKrD,6CAA6C;AAK7C,6CAA6C"
 }

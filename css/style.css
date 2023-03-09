@@ -1,1 +1,20 @@
-.card-login{padding:30px 0 0 0;width:350px;margin:0 auto}
+/* line 1, ../../xampp/htdocs/Resolve Systems/scss/style.scss */
+.card-login {
+  padding: 30px 0 0 0;
+  width: 350px;
+  margin: 0 auto;
+}
+
+@media (max-width: 575.98px) {
+  /* line 11, ../../xampp/htdocs/Resolve Systems/scss/style.scss */
+  .mq-criacao {
+    padding-top: 20px;
+  }
+}
+
+/*Extra small devices (portrait phones, menor que 576px)*/
+/*Small devices (landscape phones, 576px e maiores)*/
+/*Medium devices (tablets, 768px e maiores)*/
+/*Large devices (desktops, 992px e maiores)*/
+
+/*# sourceMappingURL=style.css.map */
