@@ -16,7 +16,7 @@
                 <div class="card-login col-sm-6 pt-4">
                     <div class="card">
                         <div class="card-header">
-                            Login - Acesso apenas para Administradores
+                            Login - Acesso às páginas seguras
                         </div>
                         <div class="card-body">
                             <form action="valida_login.php" method="post">
@@ -33,6 +33,13 @@
                                         Usuário e/ou senha inválido(s).
                                     </div>
                                 <?php
+                                    }
+                                    if (isset($_GET['login']) && $_GET['login'] == 0) {
+                                ?>
+                                        <div class="text-danger text-center">
+                                            Faça login para ter acesso às páginas seguras.
+                                        </div>
+                                <?php                                            
                                     }
                                 ?>
                                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>

@@ -1,6 +1,15 @@
 <?php
-    session_start();
-    $idUser = $_SESSION['iduser'];
+    require_once "validador_acesso.php";
+    $idUser = null;
+    if (isset($_GET['usuario'])) {
+        if($_GET['usuario'] != 0) {
+            $idUser = $_GET['usuario'];
+        } else {
+            $idUser = $_SESSION['iduser'];
+        }
+    } else {
+        $idUser = $_SESSION['iduser'];
+    }    
     $_SESSION['home'] = true;
     include 'class_user.php';
     $user = new User();
@@ -30,21 +39,38 @@
             <div class="text-center text-primary pb-3">
                 <h3>Perfil do Usuário</h3>
             </div>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="usuários">Usuários</label>
-                    <select class="form-control">
-                        <option>Selecione o usuário</option>
-                        <?php 
-                            foreach($list as $oneUser) {
-                        ?>
-                                <option><?= $oneUser['email']; ?></option>
-                        <?php    
-                            }
-                        ?>
-                    </select>
+            <div class="row">
+                <div class="col-lg-6 mt-2">
+                    <form class="form-inline" method="get" action="perfil.php">
+                        <div class="form-group mr-3">
+                            <label for="usuarios" class="pr-3">Usuários:</label>
+                            <select class="form-control bg-success text-light" id="usuarios" name="usuario">
+                                <option value=0>Selecione o usuário</option>
+                                <?php 
+                                    foreach($lista as $oneUser) {
+                                ?>
+                                        <option value="<?= $oneUser['iduser']; ?>"><?= $oneUser['email']; ?></option>
+                                <?php    
+                                    }
+                                ?>
+                            </select>
+                            <div class="form-group ml-3">
+                                <button type="submit" class="btn btn-success">Abrir perfil</button>
+                            </div>
+                        </div>                        
+                    </form>
                 </div>
-            </form>
+                <div class="col-lg-6 mt-2">
+                    <form class="form-inline" method="get" action="busca_perfil.php">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Pesquisar por nome" name="buscar">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="text-center text-primary pb-3">
                 <?php
                     if(isset($_SESSION['msg_name'])) {

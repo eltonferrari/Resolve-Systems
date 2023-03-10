@@ -47,17 +47,25 @@
             return $result;
         }
         
-        function getAllUsers() {
-            $sql = "SELECT * FROM users ORDER BY name";
-            $result = $this->db_handle->runBaseQuery($sql);
-            return $result;
-        }
-
         function getUserByEmail($email) {
             $query = "SELECT * FROM users WHERE email = ?";
             $paramType = "s";
             $paramValue = array($email);
             $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+            return $result;
+        }
+        
+        function getUserByName($name) {
+            $query = "SELECT * FROM users WHERE name LIKE ?";
+            $paramType = "s";
+            $paramValue = array($name);
+            $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+            return $result;
+        }
+        
+        function getAllUsers() {
+            $sql = "SELECT * FROM users ORDER BY name";
+            $result = $this->db_handle->runBaseQuery($sql);
             return $result;
         }
     }

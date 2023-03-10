@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require_once "validador_acesso.php";
     $_SESSION['loged'] = true;
     $_SESSION['home'] = false;
     include 'class_user.php';
