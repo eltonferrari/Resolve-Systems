@@ -27,21 +27,21 @@
             $this->db_handle->update($query, $paramType, $paramValue);
         }
         
-        function getLogUserById($idLogUser) {
-            $query = "SELECT * FROM log_user WHERE idloguser = ?";
+        function getLogUserByIdUser($idUser) {
+            $query = "SELECT * FROM log_users WHERE iduser = ?";
             $paramType = "i";
-            $paramValue = array($idLogUser);
+            $paramValue = array($idUser);
             $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
             return $result;
         }
         
+        /*
         function getAllLogUserForCreate() {
             $sql = "SELECT * FROM log_users ORDER BY created_at";
             $result = $this->db_handle->runBaseQuery($sql);
             return $result;
         }
-        
-        /*
+                
         function getUserByEmail($email) {
             $query = "SELECT * FROM users WHERE email = ?";
             $paramType = "s";

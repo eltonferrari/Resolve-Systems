@@ -12,7 +12,7 @@
 
     $user = new User();
     $user_edited = new User();
-    $perfil = $user->getUserById($_SESSION['iduser']);
+    $perfil = $user->getUserById($_POST['id_user']);
     
     foreach($perfil as $pessoa) {
         $user_id = $pessoa['iduser'];
@@ -52,7 +52,7 @@
         } else {
             $type = "administrador";
         }
-        $msg_type = "Troca de tipo de usuário para $type.";
+        $msg_type = "Troca de tipo de perfil para $type.";
         $_SESSION['msg_type'] = $msg_type;
     }
     
@@ -66,5 +66,5 @@
         $msg_active = "Usuário alterado para $active.";
         $_SESSION['msg_active'] = $msg_active;
     }
-    header("Location: perfil.php");    
+    header("Location: perfil.php?usuario=$user_id");    
 ?>

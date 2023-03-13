@@ -1,5 +1,7 @@
 <?php
     require_once "validador_acesso.php";
+    include 'class_user.php';
+    include 'class_log.php';
     $idUser = null;
     if (isset($_GET['usuario'])) {
         if($_GET['usuario'] != 0) {
@@ -11,10 +13,10 @@
         $idUser = $_SESSION['iduser'];
     }    
     $_SESSION['home'] = true;
-    include 'class_user.php';
+    
     $user = new User();
     $listaUsers = new User();
-    $lista = $listaUsers->getAllUsers();
+    $listaU = $listaUsers->getAllUsers();
     $perfil = $user->getUserById($idUser);
     foreach($perfil as $pessoa) {
         $user_id = $pessoa['iduser'];
@@ -27,6 +29,9 @@
         $user_created = $pessoa['created_at'];
         $user_updated = $pessoa['updated_at'];
     }
+    $logUser = new Log();
+    $listaL = new Log();
+    $listaLog = $listaL->getLogUserByIdUser($idUser);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -47,7 +52,7 @@
                             <select class="form-control bg-success text-light" id="usuarios" name="usuario">
                                 <option value=0>Selecione o usuário</option>
                                 <?php 
-                                    foreach($lista as $oneUser) {
+                                    foreach($listaU as $oneUser) {
                                 ?>
                                         <option value="<?= $oneUser['iduser']; ?>"><?= $oneUser['email']; ?></option>
                                 <?php    
@@ -77,6 +82,7 @@
                 ?>
                         <div class="text-center text-danger pb-1">
                             <h6><?= $_SESSION['msg_name'] ?></h6>
+                            <?php $logUser->addLogUser($idUser, $_SESSION['msg_name']);?>
                         </div>            
                 <?php
                         unset($_SESSION['msg_name']);
@@ -87,6 +93,7 @@
                 ?>
                         <div class="text-center text-danger pb-1">
                             <h6><?= $_SESSION['msg_type'] ?></h6>
+                            <?php $logUser->addLogUser($idUser, $_SESSION['msg_type']);?>
                         </div>            
                 <?php
                         unset($_SESSION['msg_type']);
@@ -96,13 +103,14 @@
                 ?>
                         <div class="text-center text-danger">
                             <h6><?= $_SESSION['msg_active']?></h6>
+                            <?php $logUser->addLogUser($idUser, $_SESSION['msg_active']);?>
                         </div>            
                 <?php
                         unset($_SESSION['msg_active']);
                     }
                 ?>
-            </div>            
-            <div class="pt-5"> 
+            </div>
+            <div class="pt-1"> 
                 <form action="valida_perfil.php" method="post">
                     <div class="row d-flex justify-content-center pb-3">
                         <div class="text-right text-danger pr-3 pl-1">
@@ -129,6 +137,7 @@
                     <div class="row pt-5">
                         <div class="col-sm-5">
                             <strong>ID do Usuário: <?php echo $user_id; ?></strong>
+                            <input type="text" name="id_user" value="<?= $user_id; ?>">
                             <br />
                             <label class="pt-4" for="name_user"><strong>Nome:</strong></label>
                             <input class="border border-success" type="text" name="name_user" placeholder="Digite seu nome completo" value="<?= $user_name; ?>">
@@ -158,12 +167,16 @@
                                 </div>
                             </div>  
                         </div>
+                        <?php
+                            $listaL = new Log();
+                            $listaLog = $listaL->getLogUserByIdUser($idUser);
+                        ?>                        
                         <div class="col-md-2 text-center pt-5">
-                            <a href=".bd-example-modal-md-html" data-toggle="modal" data-target=".bd-example-modal-md-html">
+                            <a href=".bd-example-modal-lg-html" data-toggle="modal" data-target=".bd-example-modal-lg-html">
                                 <img src="../img/icones/lista.png" width="40" title="Listar alterações">
                             </a>
-                            <div class="modal fade bd-example-modal-md-html" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-md-html">
+                            <div class="modal fade bd-example-modal-lg-html" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg-html">
                                     <div class="modal-content">
                                         <header class="modal-header">
                                             <h4 class="modal-title" id="exampleModalLongTitle">Listagem de Alterações de usuário</h4>
@@ -171,8 +184,15 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </header>
-                                        <div class="modal-body">
-                                            ...................
+                                        <div class="modal-body text-left">
+                                            <?php                                                
+                                                echo "Usuário: $user_name <br >E-mail: $user_email <br />Ativo desde: $user_created <hr />";
+                                                foreach($listaLog as $logsUser) {
+                                                    $log_descricao = $logsUser['descricao'];
+                                                    $log_created = $logsUser['created_at'];
+                                                    echo "$log_created - $log_descricao <hr />";
+                                                }
+                                            ?>
                                         </div>
                                         <footer class="modal-footer">
                                             <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
@@ -182,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center mt-5 mb-5">
+                    <div class="d-flex justify-content-center mt-3 mb-5">
                         <button class="btn btn-large btn-success"><strong>Salvar</strong></button>
                     </div>
                 </form>
