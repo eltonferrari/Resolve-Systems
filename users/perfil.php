@@ -12,8 +12,7 @@
     } else {
         $idUser = $_SESSION['iduser'];
     }    
-    $_SESSION['home'] = true;
-    
+    $_SESSION['home'] = true;    
     $user = new User();
     $listaUsers = new User();
     $listaU = $listaUsers->getAllUsers();
