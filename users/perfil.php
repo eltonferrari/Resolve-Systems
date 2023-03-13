@@ -15,9 +15,14 @@
     $_SESSION['home'] = true;    
     $user = new User();
     $listaUsers = new User();
-    $listaU = $listaUsers->getAllUsers();
-    $perfil = $user->getUserById($idUser);
-    foreach($perfil as $pessoa) {
+    $visible = new User();
+    $visible = $visible->getUserById($_SESSION['iduser']);
+    foreach($visible as $ver) {
+        $tipo = $ver['type'];
+    }
+    $listaUsers = $listaUsers->getAllUsers();
+    $user = $user->getUserById($idUser);
+    foreach($user as $pessoa) {
         $user_id = $pessoa['iduser'];
         $user_name = $pessoa['name'];
         $user_email = $pessoa['email'];
@@ -29,8 +34,8 @@
         $user_updated = $pessoa['updated_at'];
     }
     $logUser = new Log();
-    $listaL = new Log();
-    $listaLog = $listaL->getLogUserByIdUser($idUser);
+    $listaLog = new Log();
+    $listaLog = $listaLog->getLogUserByIdUser($idUser);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -43,38 +48,44 @@
             <div class="text-center text-primary pb-3">
                 <h3>Perfil do Usuário</h3>
             </div>
-            <div class="row">
-                <div class="col-lg-6 mt-2">
-                    <form class="form-inline" method="get" action="perfil.php">
-                        <div class="form-group mr-3">
-                            <label for="usuarios" class="pr-3">Usuários:</label>
-                            <select class="form-control bg-success text-light" id="usuarios" name="usuario">
-                                <option value=0>Selecione o usuário</option>
-                                <?php 
-                                    foreach($listaU as $oneUser) {
-                                ?>
-                                        <option value="<?= $oneUser['iduser']; ?>"><?= $oneUser['email']; ?></option>
-                                <?php    
-                                    }
-                                ?>
-                            </select>
-                            <div class="form-group ml-3">
-                                <button type="submit" class="btn btn-success">Abrir perfil</button>
-                            </div>
-                        </div>                        
-                    </form>
-                </div>
-                <div class="col-lg-6 mt-2">
-                    <form class="form-inline" method="get" action="busca_perfil.php">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Pesquisar por nome" name="buscar">
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="submit">Pesquisar</button>
-                            </div>
+            <?php
+                if($tipo == 1) {
+            ?>
+                    <div class="row">
+                        <div class="col-lg-6 mt-2">
+                            <form class="form-inline" method="get" action="perfil.php">
+                                <div class="form-group mr-3">
+                                    <label for="usuarios" class="pr-3">Usuários:</label>
+                                    <select class="form-control bg-success text-light" id="usuarios" name="usuario">
+                                        <option value=0>Selecione o usuário</option>
+                                        <?php 
+                                            foreach($listaUsers as $oneUser) {
+                                        ?>
+                                                <option value="<?= $oneUser['iduser']; ?>"><?= $oneUser['email']; ?></option>
+                                        <?php    
+                                            }
+                                        ?>
+                                    </select>
+                                    <div class="form-group ml-3">
+                                        <button type="submit" class="btn btn-success">Abrir perfil</button>
+                                    </div>
+                                </div>                        
+                            </form>
                         </div>
-                    </form>
-                </div>
-            </div>
+                        <div class="col-lg-6 mt-2">
+                            <form class="form-inline" method="get" action="busca_perfil.php">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Pesquisar por nome" name="buscar">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">Pesquisar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            <?php
+                }
+            ?>
             <div class="text-center text-primary pb-3">
                 <?php
                     if(isset($_SESSION['msg_name'])) {
@@ -111,32 +122,43 @@
             </div>
             <div class="pt-1"> 
                 <form action="valida_perfil.php" method="post">
-                    <div class="row d-flex justify-content-center pb-3">
-                        <div class="text-right text-danger pr-3 pl-1">
-                            <strong>Usuário</strong>
-                        </div> 
-                        <div class="pr-3">
-                            <input type="range" name="type_user" min="0" max="1" value="<?= $user_type; ?>">                                                                                            
-                        </div>
-                        <div class="text-success">
-                            <strong>Admin</strong>
-                        </div>                
-                    </div>
-                    <div class="row d-flex justify-content-center">
-                        <div class="text-right text-danger pr-3">
-                            <strong>Inativo</strong>
-                        </div>
-                        <div class="pr-3">
-                            <input type="range" name="active_user" min="0" max="1" value="<?= $user_active; ?>">
-                        </div>
-                        <div class="text-success">
-                            <strong>Ativo</strong>
-                        </div>
-                    </div>                    
+                    <?php
+                        if($tipo == 1) {
+                    ?>
+                            <div class="row d-flex justify-content-center pb-3">
+                                <div class="text-right text-danger pr-3 pl-1">
+                                    <strong>Usuário</strong>
+                                </div> 
+                                <div class="pr-3">
+                                    <input type="range" name="type_user" min="0" max="1" value="<?= $user_type; ?>">                                                                                            
+                                </div>
+                                <div class="text-success">
+                                    <strong>Admin</strong>
+                                </div>                
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <div class="text-right text-danger pr-3">
+                                    <strong>Inativo</strong>
+                                </div>
+                                <div class="pr-3">
+                                    <input type="range" name="active_user" min="0" max="1" value="<?= $user_active; ?>">
+                                </div>
+                                <div class="text-success">
+                                    <strong>Ativo</strong>
+                                </div>
+                            </div>
+                    <?php 
+                        } else {
+                    ?>
+                            <input type="hidden" name="type_user" value="<?= $user_type; ?>">
+                            <input type="hidden" name="active_user" value="<?= $user_active; ?>">
+                    <?php
+                        }
+                    ?>   
                     <div class="row pt-5">
                         <div class="col-sm-5">
                             <strong>ID do Usuário: <?php echo $user_id; ?></strong>
-                            <input type="text" name="id_user" value="<?= $user_id; ?>">
+                            <input type="hidden" name="id_user" value="<?= $user_id; ?>">
                             <br />
                             <label class="pt-4" for="name_user"><strong>Nome:</strong></label>
                             <input class="border border-success" type="text" name="name_user" placeholder="Digite seu nome completo" value="<?= $user_name; ?>">

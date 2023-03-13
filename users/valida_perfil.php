@@ -12,8 +12,7 @@
 
     $user = new User();
     $user_edited = new User();
-    $perfil = $user->getUserById($_POST['id_user']);
-    
+    $perfil = $user->getUserById($_POST['id_user']);    
     foreach($perfil as $pessoa) {
         $user_id = $pessoa['iduser'];
         $user_name = $pessoa['name'];
