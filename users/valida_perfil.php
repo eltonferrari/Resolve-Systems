@@ -29,6 +29,7 @@
         print_r($perfil);
     echo '<pre>';
 
+    echo $_POST['updated_user'];
     $user_edited->editUser($user_id,
                     $_POST['name_user'],
                     $user_email,
@@ -36,6 +37,7 @@
                     $user_image,
                     $_POST['type_user'],
                     $_POST['active_user'],
+                    $_POST['updated_user']
                     );
 
     if($user_name != $_POST['name_user']) {

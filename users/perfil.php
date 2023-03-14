@@ -2,6 +2,7 @@
     require_once "validador_acesso.php";
     include 'class_user.php';
     include 'class_log.php';
+    date_default_timezone_set('America/Sao_Paulo');
     $idUser = null;
     if (isset($_GET['usuario'])) {
         if($_GET['usuario'] != 0) {
@@ -174,7 +175,7 @@
                                 <div class="col-md-9">
                                     <strong class="bg-success p-1"><?= date('d/m/Y', strtotime($user_created)); ?></strong>
                                     <strong>às</strong>
-                                    <strong class="bg-success p-1"><?= date('H:i', strtotime($user_created)); ?></strong>                                </div>
+                                    <strong class="bg-success p-1"><?= date('H:i:s', strtotime($user_created)); ?></strong>                                </div>
                             </div>
                             <br />
                             <div class="row">  
@@ -184,14 +185,17 @@
                                 <div class="col-md-9">
                                     <strong class="bg-success p-1"><?= date('d/m/Y', strtotime($user_updated)); ?></strong>
                                     <strong>às</strong>
-                                    <strong class="bg-success p-1"><?= date('H:i', strtotime($user_updated)); ?></strong>
+                                    <strong class="bg-success p-1"><?= date('H:i:s', strtotime($user_updated)); ?></strong>
+                                    <?php 
+                                        $user_date = implode("-",array_reverse(explode("/",date('d/m/Y'))));
+                                        $user_time = date('H:i:s');
+                                        $user_update = $user_date . " " . $user_time;
+                                    ?>
+                                    <input type="hidden" name="updated_user" value="<?= $user_update; ?>">
+
                                 </div>
                             </div>  
                         </div>
-                        <?php
-                            $listaL = new Log();
-                            $listaLog = $listaL->getLogUserByIdUser($idUser);
-                        ?>                        
                         <div class="col-md-2 text-center pt-5">
                             <a href=".bd-example-modal-lg-html" data-toggle="modal" data-target=".bd-example-modal-lg-html">
                                 <img src="../img/icones/lista.png" width="40" title="Listar alterações">
@@ -200,18 +204,28 @@
                                 <div class="modal-dialog modal-lg-html">
                                     <div class="modal-content">
                                         <header class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLongTitle">Listagem de Alterações de usuário</h4>
+                                            <h4 class="modal-title text-success" id="exampleModalLongTitle">Listagem de alterações de usuário</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </header>
                                         <div class="modal-body text-left">
-                                            <?php                                                
-                                                echo "Usuário: $user_name <br >E-mail: $user_email <br />Ativo desde: $user_created <hr />";
+                                            <p class="text-success"><strong>Usuário: </strong><strong class="text-dark"><?= $user_name ?></strong><br /></p>
+                                            <p class="text-success"><strong>E-mail: </strong><strong class="text-dark"><?= $user_email ?></strong><br /></p>
+                                            <p class="text-success"><strong>Ativo desde: </strong><strong class="text-dark"><?= $user_created ?></strong></p><hr />
+                                            <?php
                                                 foreach($listaLog as $logsUser) {
                                                     $log_descricao = $logsUser['descricao'];
                                                     $log_created = $logsUser['created_at'];
-                                                    echo "$log_created - $log_descricao <hr />";
+                                            ?>
+                                                    <strong>
+                                                        <?= date('d/m/Y', strtotime($log_created)); ?>
+                                                         às 
+                                                        <?= date('H:i:s', strtotime($log_created)); ?></strong>
+                                                         - 
+                                                        <?= $log_descricao ?>
+                                                        <hr />
+                                            <?php
                                                 }
                                             ?>
                                         </div>
