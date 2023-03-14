@@ -17,6 +17,8 @@
     $user = new User();
     $listaUsers = new User();
     $visible = new User();
+    $criador = new User();
+    $creator = new User();
     $visible = $visible->getUserById($_SESSION['iduser']);
     foreach($visible as $ver) {
         $tipo = $ver['type'];
@@ -31,9 +33,11 @@
         $user_image = $pessoa['image'];
         $user_type = $pessoa['type'];
         $user_active = $pessoa['active'];
+        $user_created_by = $pessoa['created_by'];
         $user_created = $pessoa['created_at'];
         $user_updated = $pessoa['updated_at'];
     }
+    $criador = $criador->getNameById($user_created_by);
     $logUser = new Log();
     $listaLog = new Log();
     $listaLog = $listaLog->getLogUserByIdUser($idUser);
@@ -191,10 +195,17 @@
                                         $user_time = date('H:i:s');
                                         $user_update = $user_date . " " . $user_time;
                                     ?>
-                                    <input type="hidden" name="updated_user" value="<?= $user_update; ?>">
-
+                                    <input type="hidden" name="updated_user" value="<?= $user_updated; ?>">                                    
                                 </div>
-                            </div>  
+                            </div>
+                            <div class="row pt-3">  
+                                <div class="col-lg-4">
+                                    <strong class="p-1">Criado por: </strong>
+                                </div>
+                                <div class="col-lg-8">
+                                    <strong class="bg-success p-1"><?= $criador ?></strong>
+                                </div>
+                            </div>                            
                         </div>
                         <div class="col-md-2 text-center pt-5">
                             <a href=".bd-example-modal-lg-html" data-toggle="modal" data-target=".bd-example-modal-lg-html">
@@ -217,13 +228,20 @@
                                                 foreach($listaLog as $logsUser) {
                                                     $log_descricao = $logsUser['descricao'];
                                                     $log_created = $logsUser['created_at'];
+                                                    $log_created_by = $logsUser['created_by'];
                                             ?>
                                                     <strong>
                                                         <?= date('d/m/Y', strtotime($log_created)); ?>
                                                          às 
-                                                        <?= date('H:i:s', strtotime($log_created)); ?></strong>
+                                                        <?= date('H:i:s', strtotime($log_created)); ?>
+                                                    </strong>
                                                          - 
-                                                        <?= $log_descricao ?>
+                                                        <?= $log_descricao; ?>
+                                                        - Alterado por:
+                                            <?php 
+                                                        $creator = $creator->getNomeById($log_created_by);
+                                            ?>
+                                                        <?= $cria ?>
                                                         <hr />
                                             <?php
                                                 }

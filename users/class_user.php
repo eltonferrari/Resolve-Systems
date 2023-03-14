@@ -48,6 +48,17 @@
             return $result;
         }
         
+        function getNameById($idUser) {
+            $query = "SELECT * FROM users WHERE iduser = ?";
+            $paramType = "i";
+            $paramValue = array($idUser);
+            $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+            foreach($result as $nome) {
+                $pessoa = $nome['name'];
+            }
+            return $pessoa;
+        }
+        
         function getUserByEmail($email) {
             $query = "SELECT * FROM users WHERE email = ?";
             $paramType = "s";

@@ -21,9 +21,11 @@
         $user_image = $pessoa['image'];
         $user_type = $pessoa['type'];
         $user_active = $pessoa['active'];
+        $user_created_by = $pessoa['created_by'];
         $user_created = $pessoa['created_at'];
         $user_updated = $pessoa['updated_at'];
     }
+    
     echo "===== BANCO =====";
     echo '<pre>';
         print_r($perfil);
@@ -37,6 +39,7 @@
                     $user_image,
                     $_POST['type_user'],
                     $_POST['active_user'],
+                    $_POST['crested-by'],
                     $_POST['updated_user']
                     );
 
