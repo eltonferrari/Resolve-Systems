@@ -168,23 +168,23 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="row">  
-                                <div class="col-md-4 mq-criacao">
+                                <div class="col-md-3">
                                     <strong>Criação:</strong>
                                 </div>
-                                <div class="col-md-8">
-                                    <span class="bg-success">
-                                        <strong><?= $user_created; ?></strong></p>
-                                    </span>
-                                </div>
+                                <div class="col-md-9">
+                                    <strong class="bg-success p-1"><?= date('d/m/Y', strtotime($user_created)); ?></strong>
+                                    <strong>às</strong>
+                                    <strong class="bg-success p-1"><?= date('H:i', strtotime($user_created)); ?></strong>                                </div>
                             </div>
+                            <br />
                             <div class="row">  
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <strong>Alteração:</strong>
                                 </div>
-                                <div class="col-md-8">
-                                    <span class="bg-success">
-                                        <strong><?php echo $user_updated; ?></strong></p>
-                                    </span>
+                                <div class="col-md-9">
+                                    <strong class="bg-success p-1"><?= date('d/m/Y', strtotime($user_updated)); ?></strong>
+                                    <strong>às</strong>
+                                    <strong class="bg-success p-1"><?= date('H:i', strtotime($user_updated)); ?></strong>
                                 </div>
                             </div>  
                         </div>

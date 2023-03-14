@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `log_users` (
 	`iduser` int(10) NOT NULL,
   	`descricao` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 	`active` int(1) NOT NULL DEFAULT 1,
+	`created_by` int(10) NOT NULL DEFAULT 0,
   	`created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   	PRIMARY KEY (`idloguser`),
 	FOREIGN KEY(iduser) REFERENCES users(iduser)
